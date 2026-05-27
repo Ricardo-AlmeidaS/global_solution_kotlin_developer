@@ -25,7 +25,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,13 +39,13 @@ import androidx.compose.ui.unit.sp
 import com.github.ricardoalmeidas.global_solution_kotlin_developer.model.Satellite
 import com.github.ricardoalmeidas.global_solution_kotlin_developer.model.SpaceAlert
 import com.github.ricardoalmeidas.global_solution_kotlin_developer.ui.theme.Global_solution_kotlin_developerTheme
-import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.OrbitWatchUiState
-import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.OrbitWatchViewModel
+import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.SkyTrackUiState
+import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.SkyTrackViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OrbitWatchScreen(
-    viewModel: OrbitWatchViewModel,
+fun SkyTrackScreen(
+    viewModel: SkyTrackViewModel,
     onSatelliteClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -53,7 +53,7 @@ fun OrbitWatchScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(title = {})
+            CenterAlignedTopAppBar(title = {})
         }
     ) { innerPadding ->
         Column(
@@ -65,23 +65,23 @@ fun OrbitWatchScreen(
             verticalArrangement = Arrangement.Center
         ) {
             when (val state = uiState) {
-                is OrbitWatchUiState.Initial -> {
+                is SkyTrackUiState.Initial -> {
                     InitialContent(
                         onLoadData = { viewModel.fetchData() }
                     )
                 }
-                is OrbitWatchUiState.Loading -> {
+                is SkyTrackUiState.Loading -> {
                     CircularProgressIndicator(modifier = Modifier.size(56.dp))
                 }
-                is OrbitWatchUiState.Success -> {
-                    OrbitWatchContent(
+                is SkyTrackUiState.Success -> {
+                    SkyTrackContent(
                         satellites = state.satellites,
                         alerts = state.alerts,
                         onBack = { viewModel.resetToInitial() },
                         onSatelliteClick = onSatelliteClick
                     )
                 }
-                is OrbitWatchUiState.Error -> {
+                is SkyTrackUiState.Error -> {
                     ErrorContent(
                         message = state.message,
                         onRetry = { viewModel.fetchData() }
@@ -99,6 +99,16 @@ fun InitialContent(onLoadData: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxWidth()
     ) {
+        Text(
+            text = "SkyTrack",
+            style = MaterialTheme.typography.displaySmall,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary,
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         Text(
             text = "🛰️",
             fontSize = 120.sp,
@@ -150,7 +160,7 @@ fun InitialContent(onLoadData: () -> Unit) {
 }
 
 @Composable
-fun OrbitWatchContent(
+fun SkyTrackContent(
     satellites: List<Satellite>,
     alerts: List<SpaceAlert>,
     onBack: () -> Unit,

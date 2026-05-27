@@ -5,7 +5,7 @@ import com.github.ricardoalmeidas.global_solution_kotlin_developer.model.SpaceAl
 import retrofit2.Response
 import retrofit2.http.GET
 
-interface OrbitWatchService {
+interface SkyTrackService {
 
     @GET("satellites")
     suspend fun getSatellites(): Response<SatelliteResponse>

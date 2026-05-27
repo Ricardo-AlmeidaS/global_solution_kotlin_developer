@@ -17,14 +17,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.github.ricardoalmeidas.global_solution_kotlin_developer.ui.theme.Global_solution_kotlin_developerTheme
 import com.github.ricardoalmeidas.global_solution_kotlin_developer.ui.theme.screens.AlertsScreen
-import com.github.ricardoalmeidas.global_solution_kotlin_developer.ui.theme.screens.OrbitWatchScreen
+import com.github.ricardoalmeidas.global_solution_kotlin_developer.ui.theme.screens.SkyTrackScreen
 import com.github.ricardoalmeidas.global_solution_kotlin_developer.ui.theme.screens.SatelliteDetailScreen
-import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.OrbitWatchUiState
-import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.OrbitWatchViewModel
+import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.SkyTrackUiState
+import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.SkyTrackViewModel
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel: OrbitWatchViewModel by viewModels()
+    private val viewModel: SkyTrackViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 
                         // Tela 1: tela principal (home + loading + erro)
                         composable("orbitwatch") {
-                            OrbitWatchScreen(
+                            SkyTrackScreen(
                                 viewModel = viewModel,
                                 onSatelliteClick = { index ->
                                     navController.navigate("satellite/$index")
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
                             )
                         ) { backStackEntry ->
                             val index = backStackEntry.arguments?.getInt("index") ?: 0
-                            val satellites = (uiState as? OrbitWatchUiState.Success)?.satellites
+                            val satellites = (uiState as? SkyTrackUiState.Success)?.satellites
                             val satellite = satellites?.getOrNull(index)
 
                             if (satellite != null) {
@@ -81,7 +81,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         ) {
-                            val alerts = (uiState as? OrbitWatchUiState.Success)?.alerts ?: emptyList()
+                            val alerts = (uiState as? SkyTrackUiState.Success)?.alerts ?: emptyList()
                             AlertsScreen(
                                 navController = navController,
                                 alerts = alerts

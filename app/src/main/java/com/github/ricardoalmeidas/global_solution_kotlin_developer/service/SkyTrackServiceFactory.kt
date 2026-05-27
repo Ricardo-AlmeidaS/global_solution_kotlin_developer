@@ -4,9 +4,9 @@ import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class OrbitWatchServiceFactory {
+class SkyTrackServiceFactory {
 
-    fun create(): OrbitWatchService {
+    fun create(): SkyTrackService {
         val gson = GsonBuilder().create()
 
         val retrofit = Retrofit.Builder()
@@ -14,6 +14,6 @@ class OrbitWatchServiceFactory {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
-        return retrofit.create(OrbitWatchService::class.java)
+        return retrofit.create(SkyTrackService::class.java)
     }
 }

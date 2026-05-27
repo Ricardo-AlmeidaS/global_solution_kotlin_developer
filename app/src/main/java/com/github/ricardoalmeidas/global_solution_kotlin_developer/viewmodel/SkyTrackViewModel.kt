@@ -9,36 +9,36 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-sealed class OrbitWatchUiState {
-    object Initial : OrbitWatchUiState()
-    object Loading : OrbitWatchUiState()
+sealed class SkyTrackUiState {
+    object Initial : SkyTrackUiState()
+    object Loading : SkyTrackUiState()
     data class Success(
         val satellites: List<Satellite>,
         val alerts: List<SpaceAlert>
-    ) : OrbitWatchUiState()
-    data class Error(val message: String) : OrbitWatchUiState()
+    ) : SkyTrackUiState()
+    data class Error(val message: String) : SkyTrackUiState()
 }
 
-class OrbitWatchViewModel : ViewModel() {
+class SkyTrackViewModel : ViewModel() {
 
-    private val _uiState = MutableStateFlow<OrbitWatchUiState>(OrbitWatchUiState.Initial)
-    val uiState: StateFlow<OrbitWatchUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow<SkyTrackUiState>(SkyTrackUiState.Initial)
+    val uiState: StateFlow<SkyTrackUiState> = _uiState.asStateFlow()
 
     fun fetchData() {
         viewModelScope.launch {
-            _uiState.value = OrbitWatchUiState.Loading
+            _uiState.value = SkyTrackUiState.Loading
             try {
                 val satellites = getMockSatellites()
                 val alerts = getMockAlerts()
-                _uiState.value = OrbitWatchUiState.Success(satellites, alerts)
+                _uiState.value = SkyTrackUiState.Success(satellites, alerts)
             } catch (e: Exception) {
-                _uiState.value = OrbitWatchUiState.Error("Falha ao carregar dados: ${e.message}")
+                _uiState.value = SkyTrackUiState.Error("Falha ao carregar dados: ${e.message}")
             }
         }
     }
 
     fun resetToInitial() {
-        _uiState.value = OrbitWatchUiState.Initial
+        _uiState.value = SkyTrackUiState.Initial
     }
 
     private fun getMockSatellites(): List<Satellite> {
