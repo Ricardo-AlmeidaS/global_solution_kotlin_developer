@@ -37,7 +37,8 @@ A primeira tela que o usuário vê ao abrir o app. Apresenta o nome e a proposta
 - Indicador de carregamento (spinner) enquanto os dados são buscados
 - Mensagem de erro com botão de nova tentativa, caso algo falhe
 
-<img width="376" height="832" alt="image" src="https://github.com/user-attachments/assets/ac096352-01ea-4246-9e13-80cb07b04f19" />
+<img width="375" height="832" alt="image" src="https://github.com/user-attachments/assets/3f7a5327-b9b0-4af7-9238-34933d9d98da" />
+
 
 ---
 
