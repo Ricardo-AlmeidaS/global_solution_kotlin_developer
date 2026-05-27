@@ -37,6 +37,8 @@ A primeira tela que o usuário vê ao abrir o app. Apresenta o nome e a proposta
 - Indicador de carregamento (spinner) enquanto os dados são buscados
 - Mensagem de erro com botão de nova tentativa, caso algo falhe
 
+<img width="376" height="832" alt="image" src="https://github.com/user-attachments/assets/ac096352-01ea-4246-9e13-80cb07b04f19" />
+
 ---
 
 ### Tela 2 — Painel Principal
@@ -48,6 +50,8 @@ Exibida após o carregamento dos dados. Mostra um resumo dos alertas mais recent
 - Seção **"Satélites Monitorados"** com 2 satélites, mostrando nome, tipo, país e status operacional
 - Botão **"Detalhes"** em cada satélite para ver mais informações
 - Botão **"Voltar à Tela Inicial"** no rodapé
+
+<img width="377" height="833" alt="image" src="https://github.com/user-attachments/assets/e9cb77af-d0bc-4b68-b6bd-56fed800fe79" />
 
 ---
 
@@ -67,18 +71,7 @@ Acessada ao tocar em **"Detalhes"** em um satélite. Exibe todas as informaçõe
   - Tipo de órbita (LEO, MEO ou GEO)
 - Botão **"Voltar"** para retornar ao painel
 
----
-
-### Tela 4 — Alertas
-
-Lista completa de todos os alertas registrados, com filtro por nível de severidade.
-
-**O que tem nessa tela:**
-- Filtros no topo: **Todos / Crítico / Alto / Médio / Baixo**
-- Lista de alertas filtrada dinamicamente ao selecionar um nível
-- Cada alerta exibe: título, região, horário e satélite que detectou
-- Mensagem informativa caso nenhum alerta corresponda ao filtro selecionado
-- Botão de voltar no cabeçalho
+<img width="376" height="831" alt="image" src="https://github.com/user-attachments/assets/de76a5db-b478-4c65-9fd6-f2ce53803b78" />
 
 ---
 
