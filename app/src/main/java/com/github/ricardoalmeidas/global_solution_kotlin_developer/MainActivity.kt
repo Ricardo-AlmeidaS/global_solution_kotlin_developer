@@ -47,6 +47,9 @@ class MainActivity : ComponentActivity() {
                                 viewModel = viewModel,
                                 onSatelliteClick = { index ->
                                     navController.navigate("satellite/$index")
+                                },
+                                onAlertsClick = {
+                                    navController.navigate("alerts")
                                 }
                             )
                         }

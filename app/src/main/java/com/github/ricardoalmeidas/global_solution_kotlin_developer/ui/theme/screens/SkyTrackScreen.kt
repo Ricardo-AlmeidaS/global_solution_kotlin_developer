@@ -47,6 +47,7 @@ import com.github.ricardoalmeidas.global_solution_kotlin_developer.viewmodel.Sky
 fun SkyTrackScreen(
     viewModel: SkyTrackViewModel,
     onSatelliteClick: (Int) -> Unit,
+    onAlertsClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -78,7 +79,8 @@ fun SkyTrackScreen(
                         satellites = state.satellites,
                         alerts = state.alerts,
                         onBack = { viewModel.resetToInitial() },
-                        onSatelliteClick = onSatelliteClick
+                        onSatelliteClick = onSatelliteClick,
+                        onAlertsClick = onAlertsClick
                     )
                 }
                 is SkyTrackUiState.Error -> {
@@ -164,7 +166,8 @@ fun SkyTrackContent(
     satellites: List<Satellite>,
     alerts: List<SpaceAlert>,
     onBack: () -> Unit,
-    onSatelliteClick: (Int) -> Unit
+    onSatelliteClick: (Int) -> Unit,
+    onAlertsClick: () -> Unit
 ) {
     val visibleAlerts = alerts.take(2)
     val visibleSatellites = satellites.take(2)
@@ -175,11 +178,20 @@ fun SkyTrackContent(
     ) {
         Spacer(modifier = Modifier.height(8.dp))
 
-        Text(
-            text = "Alertas Recentes",
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Alertas Recentes",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold
+            )
+            OutlinedButton(onClick = onAlertsClick) {
+                Text(text = "Ver todos")
+            }
+        }
 
         visibleAlerts.forEach { alert ->
             AlertItem(alert = alert)
