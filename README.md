@@ -110,3 +110,12 @@ Acessada ao tocar em **"Detalhes"** em um satélite. Exibe todas as informaçõe
 | GPS IIF-12 | Navegação | EUA | 20.200 km |
 | INPE-SCD2 | Pesquisa | Brasil | 745 km |
 | Landsat 9 | Observação Terrestre | EUA | 705 km |
+
+---
+
+## Integrantes
+
+| Nome | RM |
+|---|---|
+| Carolina Barbosa Pacifico de Almeida| 555000 |
+|  Ricardo Henrique de Almeida Santos | 557093 |
